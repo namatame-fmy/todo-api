@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 @RestController
 public class TaskController {
     private List<Task> tasks = new ArrayList<>();
@@ -17,5 +20,11 @@ public class TaskController {
     @GetMapping("/tasks")
     public List<Task> getTasks(){
         return tasks;
+    }
+
+    @PostMapping("/tasks")
+    public  Task addTask(@RequestBody Task newTask){
+        tasks.add(newTask);
+        return newTask;
     }
 }
